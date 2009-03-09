@@ -1,22 +1,29 @@
-# cd
+# cd (heh)
 alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
+alias ......='cd ../../../../..'
+alias .......='cd ../../../../../..'
 
 # ls
 alias ls="ls -F"
 alias l="ls -lAh"
-alias ll="ls -l"
+alias ll='ls -GFlap'
 alias la='ls -A'
+
+alias t='tail -f -n 100'
 
 # git
 alias gl='git pull'
 alias gp='git push'
-alias gd='git diff'
+alias gd='git diff | mate'
 alias gc='git commit'
 alias gca='git commit -a'
 alias gco='git checkout'
 alias gb='git branch'
-alias gs='git status'
-alias grm="git status | grep deleted | awk '{print \$3}' | xargs git rm"
+alias gba='git branch -a'
+alias gst='git status'
 
 # rails
 alias sc='script/console'
@@ -28,5 +35,15 @@ alias scaffold='script/generate nifty_scaffold'
 alias migrate='rake db:migrate db:test:clone'
 alias rst='touch tmp/restart.txt'
 
-# commands starting with % for pasting from web
-alias %=' '
+# tar stuff
+alias tbz='tar jcvf'
+alias tgz='tar zcvf'
+alias utb='tar jxvf'
+alias utz='tar zxvf'
+
+# edit in textmate
+alias e='mate'
+alias et="mate ."
+
+# dev shortcuts
+alias mix="cd ~/code/headmix"
