@@ -22,12 +22,21 @@ compinit -C
 
 zmodload -i zsh/complist
 
-## completions ####
 autoload -U zstyle+
-# zstyle ':completion:*:*:*:*:*' menu yes select
+## completions ####
 # zstyle ':completion:*:*:*:*:processes' force-list always
-
+# zstyle ':completion:*:*:*:*:*' menu yes select
+zstyle ':completion:*' menu yes select
+# FIXME
+bindkey -M menuselect '/' accept-and-infer-next-history \
+                      '^U' undo \
+                      '^@' accept-and-menu-complete \
+                      '^A' .beginning-of-line-hist \
+                      '^E' .end-of-line-hist \
+                      '^P' vi-forward-blank-word \
+                      '^N' vi-backward-blank-word \
 ## add colors to processes for kill completion
+
 zstyle ':completion:*:*:kill:*:processes' command 'ps -axco pid,user,command'
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:*:*:*:processes' command "ps -u `whoami` -o pid,user,comm -w -w"
@@ -41,7 +50,7 @@ zstyle ':completion:*:ssh:*' tag-order \
 zstyle ':completion:*:ssh:*' group-order \
    hosts-domain hosts-host users hosts-ipaddr
 # Common usernames
-users=( admin tbrice thomas root gleemer tom administrator brice tomtoday)
+users=( admin tbrice thomas root gleemer tom administrator brice tomtoday )
 
 zstyle ':completion:*' users $users
 ## General completion technique

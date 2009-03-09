@@ -1,9 +1,10 @@
+bindkey -e
 autoload colors; colors
 
 if [[ -n $SSH_CONNECTION ]]; then
   export PS1='%m:%3~$(git_info_for_prompt)%# '
 else
-  export PS1='%B%{${fg[blue]}%}%n@%m %{${fg[cyan]}%}:%~%{${fg[green]}%}$(git_info_for_prompt)%{${fg[red]}%}$%b '
+  export PS1='%B%{${fg[blue]}%}%n@%m%{${fg[cyan]}%}:%~%{${fg[green]}%}$(git_info_for_prompt)%{${fg[red]}%}$%b '
 fi
 
 export CLICOLOR=1
@@ -53,13 +54,4 @@ setopt HIST_REDUCE_BLANKS
 
 zle -N newtab
 
-bindkey -e
 bindkey '^[^N' newtab
-# FIXME
-bindkey -M menuselect '/' accept-and-infer-next-history \
-                      '^U' undo \
-                      '^@' accept-and-menu-complete \
-                      '^A' .beginning-of-line-hist \
-                      '^E' .end-of-line-hist \
-                      '^P' vi-forward-blank-word \
-                      '^N' vi-backward-blank-word \
