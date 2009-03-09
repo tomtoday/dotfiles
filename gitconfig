@@ -53,7 +53,7 @@
 
 [github]
   user = tomtoday
-  token = #foo
+  token = 314ea7d565e64f4966fcd1b1cc6c322d
 
 [git-tmbundle]
   gitx-path = /Applications/GitX.app

@@ -1,0 +1,2 @@
+# Display supplied dir as a 'tree'.
+find $1 | sed -e 's/[^\/]*\//|----/g' -e 's/---- |/    |/g' | less -R

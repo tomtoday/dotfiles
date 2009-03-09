@@ -1,5 +1,57 @@
+## formatting and messages
 zstyle ':completion:*' verbose yes
-zstyle ':completion:*:descriptions' format '%B%d%b'
-zstyle ':completion:*:messages' format '%d'
-zstyle ':completion:*:warnings' format 'No matches for: %d'
+zstyle ':completion:*' menu yes select
+
+zstyle ':completion:*:descriptions' format $'%{\e[0;31m%}%d%{\e[0m%}'
+zstyle ':completion:*:messages' format $'%{\e[0;31m%}%d%{\e[0m%}'
+zstyle ':completion:*:warnings' format $'%{\e[0;31m%}No matches for: %d%{\e[0m%}'
+zstyle ':completion:*:corrections' format $'%{\e[0;31m%}%d (errors: %e)%{\e[0m%}'
 zstyle ':completion:*' group-name ''
+
+## determine in which order the names (files) should be
+## listed and completed when using menu completion.
+## `size' to sort them by the size of the file
+## `links' to sort them by the number of links to the file
+## `modification' or `time' or `date' to sort them by the last modification time
+## `access' to sort them by the last access time
+## `inode' or `change' to sort them by the last inode change time
+## `reverse' to sort in decreasing order
+## If the style is set to any other value, or is unset, files will be
+## sorted alphabetically by name.
+zstyle ':completion:*' file-sort name
+
+## how many completions switch on menu selection
+## use 'long' to start menu compl. if list is bigger than screen
+## or some number to start menu compl. if list has that number
+## of completions (or more).
+# zstyle ':completion:*' menu select=long
+
+## case-insensitive (uppercase from lowercase) completion
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+## case-insensitive (all) completion
+#zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+## case-insensitive,partial-word and then substring completion
+# zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+
+## offer indexes before parameters in subscripts
+zstyle ':completion:*:*:-subscript-:*' tag-order indexes parameters
+
+## insert all expansions for expand completer
+zstyle ':completion:*:expand:*' tag-order all-expansions
+
+## ignore completion functions (until the _ignored completer)
+zstyle ':completion:*:functions' ignored-patterns '_*'
+
+## completion caching
+zstyle ':completion::complete:*' use-cache 1
+zstyle ':completion::complete:*' cache-path ~/.zcompcache/$HOST
+
+## add colors to completions
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+
+## don't complete backup files as executables
+zstyle ':completion:*:complete:-command-::commands' ignored-patterns '*\~'
+
+## filename suffixes to ignore during completion (except after rm command)
+zstyle ':completion:*:*:(^rm):*:*files' ignored-patterns '*?.(o|c~|old|pro|zwc)'
+
