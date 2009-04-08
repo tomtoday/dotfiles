@@ -33,6 +33,7 @@ alias a='autotest -rails'
 alias tlog='tail -f log/development.log'
 alias scaffold='script/generate nifty_scaffold'
 alias migrate='rake db:migrate db:test:clone'
+alias db_reset='rake db:migrate:reset db:fixtures:load db:test:prepare'
 alias rst='touch tmp/restart.txt'
 
 # tar stuff
