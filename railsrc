@@ -10,7 +10,7 @@ def show_log
   Rails.logger.flush
   Rails.logger.instance_variable_set("@log", STDOUT)
   Rails.logger.level = Logger::DEBUG
-  Rails.logger.auto_flushing = 1
+  Rails.logger.auto_flushing = true
   nil
 end
 
@@ -22,3 +22,4 @@ def hide_log
   end
   nil
 end
+                                   
