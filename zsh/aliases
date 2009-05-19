@@ -49,3 +49,4 @@ alias et="mate ."
 # dev shortcuts
 alias mix="cd ~/code/headmix"
 alias flush_dns="dscacheutil -flushcache"
+alias timestamp="date +%s"
