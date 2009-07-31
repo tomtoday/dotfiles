@@ -33,6 +33,7 @@
   co = checkout
   df = diff
   lg = log -p
+	send = ! rake  && git push \"$@\"
 [branch]
   autosetupmerge = true
 [github]
@@ -40,3 +41,5 @@
   token = ##
 [git-tmbundle]
   gitx-path = /Applications/GitX.app
+[push]
+	default = current

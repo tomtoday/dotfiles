@@ -1,4 +1,4 @@
-#!/usr/bin/ruby
+#!/usr/bin/env ruby
 
 # from http://techspeak.plainlystated.com/2009/03/watching-your-logs-from-console.html
 def show_log
