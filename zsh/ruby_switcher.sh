@@ -95,7 +95,7 @@ function use_ruby_186 {
 }
 
 function install_ruby_186 {
-  install_ruby_from_source "1.8" "6" "369" &&
+  install_ruby_from_source "1.8" "6" "383" &&
   use_ruby_186 && install_rake && popd
 }
 
@@ -149,4 +149,5 @@ function display_ruby_version {
  export RPS1=$RUBY_VERSION
 }
 
+# use_usr_local_ruby_186
 use_usr_local_ruby_186

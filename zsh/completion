@@ -1,4 +1,13 @@
 # Shitty bloat
+# autoload -U compinit
+# compinit
+#  
+# # matches case insensitive for lowercase
+# zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+#  
+# # pasting with tabs doesn't perform completion
+# zstyle ':completion:*' insert-tab pending
+##############
 
 autoload -U incremental-complete-word
 zle -N incremental-complete-word
@@ -64,5 +73,5 @@ zstyle ':completion:*' completer _expand _complete _list _ignored _approximate
 ## allow one error
 #zstyle ':completion:*:approximate:*' max-errors 1 numeric
 ## allow one error for every three characters typed in approximate completer
-zstyle -e ':completion:*:approximate:*' max-errors \
-'reply=( $(( ($#PREFIX+$#SUFFIX)/3 )) numeric )'
+# zstyle -e ':completion:*:approximate:*' max-errors \
+# 'reply=( $(( ($#PREFIX+$#SUFFIX)/3 )) numeric )'
