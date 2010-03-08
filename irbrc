@@ -1,17 +1,17 @@
-#!/usr/bin/env ruby
+#!/usr/bin/env ruby -w
 
 require 'irb/completion'
 require 'irb/ext/save-history'
 require 'rubygems'
 require 'wirble'
 
-Wirble.init
-Wirble.colorize
-
 IRB.conf[:SAVE_HISTORY] = 1000
 IRB.conf[:HISTORY_FILE] = "#{ENV['HOME']}/.irb_history"
 IRB.conf[:PROMPT_MODE] = :SIMPLE
-IRB.conf[:AUTO_INDENT] = true
+
+Wirble.init
+# Wirble.init(:skip_prompt => true, :skip_history => true)
+Wirble.colorize 
 
 class Object
   # list methods which aren't in superclass
