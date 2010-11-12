@@ -1,9 +1,12 @@
-#!/usr/bin/env ruby -w
-
-require 'irb/completion'
-require 'irb/ext/save-history'
-require 'rubygems'
-require 'wirble'
+#!/usr/bin/env ruby
+begin
+  require 'rubygems'
+  require 'irb/completion'
+  require 'irb/ext/save-history'
+  require 'wirble'
+rescue LoadError => e
+  "Could not load stuff in .irbrc"
+end
 
 IRB.conf[:SAVE_HISTORY] = 1000
 IRB.conf[:HISTORY_FILE] = "#{ENV['HOME']}/.irb_history"
@@ -34,4 +37,4 @@ class Object
   end
 end
 
-load File.dirname(__FILE__) + '/.railsrc' if $0 == 'irb' && ENV['RAILS_ENV']
+# load File.dirname(__FILE__) + '/.railsrc' # if $0 == 'irb' && (ENV['RAILS_ENV'] || defined?(Rails))

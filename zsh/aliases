@@ -48,5 +48,9 @@ alias et="mate ."
 
 # dev shortcuts
 alias mix="cd ~/code/headmix"
+alias ccdb="cd ~/code/schawk/git_svn_ccdb"
+alias 301="cd ~/code/recursiveawesome/301"
+alias village="cd ~/code/redstamp/Village"
+
 alias flush_dns="dscacheutil -flushcache"
 alias timestamp="date +%s"
