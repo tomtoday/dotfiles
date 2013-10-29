@@ -17,7 +17,7 @@ alias t='tail -f -n 100'
 # git
 alias gl='git pull'
 alias gp='git push'
-alias gd='git diff | mate'
+alias gd='git diff | e'
 alias gc='git commit'
 alias gca='git commit -a'
 alias gco='git checkout'
@@ -32,9 +32,8 @@ alias sg='script/generate'
 alias a='autotest -rails'
 alias tlog='tail -f log/development.log'
 alias scaffold='script/generate nifty_scaffold'
-alias migrate='rake db:migrate db:test:clone'
-alias db_reset='rake db:migrate:reset db:fixtures:load db:test:prepare'
-alias rst='touch tmp/restart.txt'
+alias migrate='bundle console exec rake db:migrate db:test:clone'
+alias db_reset='bundle console exec rake db:migrate:reset db:fixtures:load db:test:prepare'
 
 # tar stuff
 alias tbz='tar jcvf'
@@ -42,15 +41,15 @@ alias tgz='tar zcvf'
 alias utb='tar jxvf'
 alias utz='tar zxvf'
 
-# edit in textmate
-alias e='mate'
-alias et="mate ."
-
-# dev shortcuts
-alias mix="cd ~/code/headmix"
-alias ccdb="cd ~/code/schawk/git_svn_ccdb"
-alias 301="cd ~/code/recursiveawesome/301"
-alias village="cd ~/code/redstamp/Village"
+# edit in sublime text
+alias e='subl'
+alias et="subl ."
 
 alias flush_dns="dscacheutil -flushcache"
 alias timestamp="date +%s"
+
+# python
+alias ptest='unit2 discover'
+
+alias sqlcipher="/usr/local/bin/sqlcipher/bin/sqlite3"
+

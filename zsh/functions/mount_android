@@ -1,0 +1,2 @@
+# mount the android file image
+hdiutil attach ~/Documents/src/android.dmg.sparseimage -mountpoint /Volumes/android;
