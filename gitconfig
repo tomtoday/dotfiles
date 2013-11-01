@@ -23,7 +23,7 @@
 [core]
   excludesfile = /Users/tom/.gitignore
   whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
-  editor = mate -w
+  editor = subl -n -w
 [apply]
   whitespace = nowarn
 [alias]
@@ -39,7 +39,5 @@
 [github]
   user = tomtoday
   token = ##
-[git-tmbundle]
-  gitx-path = /Applications/GitX.app
 [push]
-	default = current
+  default = upstream

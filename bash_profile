@@ -8,3 +8,4 @@ if [ -f ~/.bashrc ]; then
 fi
 
 PATH=$PATH:$HOME/.manymo/bin # Add manymo to PATH for scripting
+export PATH=/Users/tom/.rvm/gems/ruby-2.0.0-p247/bin:/Users/tom/.rvm/gems/ruby-2.0.0-p247@global/bin:/Users/tom/.rvm/rubies/ruby-2.0.0-p247/bin:/Users/tom/.rvm/bin:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin::/Users/tom/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin:/Users/tom/src/android-sdk/tools:/Users/tom/src/android-sdk/platform-tools:/Users/tom/.manymo/bin:/Users/tom/.manymo/bin:/usr/local/mysql/bin

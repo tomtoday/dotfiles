@@ -4,13 +4,13 @@ autoload colors; colors
 if [[ -n $SSH_CONNECTION ]]; then
   export PS1='%m:%3~$(git_info_for_prompt)%# '
 else
-  export PS1='%{${fg[grey]}%}[$(~/.rvm/bin/rvm-prompt)] %B%{${fg[cyan]}%}%~%{${fg[green]}%}$(git_info_for_prompt)%{${fg[red]}%}$%b '
+  export PS1='%{${fg[grey]}%}[$(~/.rvm/bin/rvm-prompt s i v p g)] %B%{${fg[cyan]}%}%~%{${fg[green]}%}$(git_info_for_prompt)%{${fg[red]}%}$%b '
 fi
 export CLICOLOR=1
 export TERM=xterm-color
 export LSCOLORS=gxfxcxdxbxegedabagacad
-export EDITOR=/usr/bin/mate
-export VISUAL="mate -w"
+alias subl="$HOME/bin/subl -n"
+export EDITOR="$HOME/bin/subl -n -w"
 # export PAGER="less -R"
 export DISPLAY=:0.0
 export LC_CTYPE=en_US.UTF-8
