@@ -3,7 +3,7 @@ begin
   require 'rubygems'
   require 'irb/completion'
   require 'irb/ext/save-history'
-  require 'wirble'
+  # require 'wirble'
 rescue LoadError => e
   "Could not load stuff in .irbrc"
 end
@@ -12,16 +12,16 @@ IRB.conf[:SAVE_HISTORY] = 1000
 IRB.conf[:HISTORY_FILE] = "#{ENV['HOME']}/.irb_history"
 IRB.conf[:PROMPT_MODE] = :SIMPLE
 
-Wirble.init
+# Wirble.init
 # Wirble.init(:skip_prompt => true, :skip_history => true)
-Wirble.colorize 
+# Wirble.colorize
 
 class Object
   # list methods which aren't in superclass
   def local_methods(obj = self)
     (obj.methods - obj.class.superclass.instance_methods).sort
   end
-  
+
   # print documentation
   #
   #   ri 'Array#pop'
