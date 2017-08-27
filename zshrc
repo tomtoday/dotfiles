@@ -30,4 +30,4 @@ export PGDATA=/usr/local/var/postgres
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
-export HOMEBREW_GITHUB_API_TOKEN="4aed371edb3eb273a8b7bb00591569c32e680fff"
+export HOMEBREW_GITHUB_API_TOKEN="nnn"
