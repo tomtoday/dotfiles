@@ -4,60 +4,14 @@ autoload colors; colors
 if [[ -n $SSH_CONNECTION ]]; then
   export PS1='%m:%3~$(git_info_for_prompt)%# '
 else
-  export PS1='%{${fg[grey]}%}[$(~/.rvm/bin/rvm-prompt s i v p g)] %B%{${fg[cyan]}%}%~%{${fg[green]}%}$(git_info_for_prompt)%{${fg[red]}%}$%b '
+  export PS1='%{${fg[grey]}%} %B%{${fg[cyan]}%}%~%{${fg[green]}%}$(git_info_for_prompt)%{${fg[red]}%}$%b '
 fi
 export CLICOLOR=1
 export TERM=xterm-color
 export LSCOLORS=gxfxcxdxbxegedabagacad
-export EDITOR="atom --wait"
+export EDITOR="code --wait"
 export DISPLAY=:0.0
 export LC_CTYPE=en_US.UTF-8
-
-# java
-
-function setjdk() {
-  if [ $# -ne 0 ]; then
-   removeFromPath '/System/Library/Frameworks/JavaVM.framework/Home/bin'
-   if [ -n "${JAVA_HOME+x}" ]; then
-    removeFromPath $JAVA_HOME
-   fi
-   export JAVA_HOME=`/usr/libexec/java_home -v $@`
-   export PATH=$JAVA_HOME/bin:$PATH
-  fi
- }
- function removeFromPath() {
-  export PATH=$(echo $PATH | sed -E -e "s;:$1;;" -e "s;$1:?;;")
- }
-setjdk 1.8
-export JAVA7_HOME=`/usr/libexec/java_home -v 1.7`
-export JAVA8_HOME=`/usr/libexec/java_home -v 1.8`
-export JAVA6_HOME=`/usr/libexec/java_home -v 1.6`
-export ANT_HOME="/usr/share/ant"
-export ANDROID_HOME="/Users/tom/src/android-sdk"
-
-export PATH="/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:$HOME/bin:/Developer/usr/bin:$PATH:$HOME/src/android-sdk/tools:$HOME/src/android-sdk/platform-tools"
-export MANPATH="/usr/local/man:/usr/local/mysql/man:/opt/local/man:$MANPATH"
-
-# docker
-#old boot2docker stuff
-#export DOCKER_HOST=tcp://192.168.59.103:2376
-#export DOCKER_CERT_PATH=/Users/tom/.boot2docker/certs/boot2docker-vm
-#export DOCKER_TLS_VERIFY=1
-
-# new docker-machine...
-eval "$(docker-machine env foundation)"
-
-# go
-export GOROOT=/usr/local/opt/go/libexec
-# export GOROOT=`go env GOROOT`
-export GOPATH=$HOME/go
-export GO15VENDOREXPERIMENT=1
-export PATH=$PATH:$GOPATH/bin
-export PATH=$PATH:$GOROOT/bin
-
-export NPM_PACKAGES="${HOME}/.npm-packages"
-export NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
-export PATH="$NPM_PACKAGES/bin:$PATH"
 
 fpath=(`brew --prefix`/share/zsh/site-functions $fpath)
 fpath=(~/.zsh/functions $fpath)
@@ -85,3 +39,16 @@ setopt APPEND_HISTORY # adds history
 setopt INC_APPEND_HISTORY SHARE_HISTORY  # adds history incrementally and share it across sessions
 setopt HIST_IGNORE_ALL_DUPS  # don't record dupes in history
 setopt HIST_REDUCE_BLANKS
+
+export PATH="/usr/local/bin:/usr/local/sbin:$HOME/bin:/Developer/usr/bin:$PATH"
+export MANPATH="/usr/local/man:/usr/local/mysql/man:/opt/local/man:$MANPATH"
+
+## go
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
+
+## node
+export NPM_PACKAGES="${HOME}/.npm-packages"
+export NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
+export PATH="$NPM_PACKAGES/bin:$PATH"
+
