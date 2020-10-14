@@ -14,6 +14,16 @@ HELPDIR=/usr/local/share/zsh/help
 
 # export HOMEBREW_GITHUB_API_TOKEN="nnn"
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+source <(kubectl completion zsh)
+## see https://github.com/lukechilds/zsh-nvm
+export NVM_LAZY_LOAD=true
+source ~/.zsh-nvm/zsh-nvm.plugin.zsh
+source ~/.dotfiles/scripts/api-services.sh
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/tbrice/src/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/tbrice/src/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/tbrice/src/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/tbrice/src/google-cloud-sdk/completion.zsh.inc'; fi
+
+eval "$(rbenv init -)"

@@ -41,10 +41,10 @@ alias utb='tar jxvf'
 alias utz='tar zxvf'
 
 # edit in flavor of the month
-alias e='code'
-alias et="code ."
+alias e='atom'
+alias et="atom ."
 
-alias flush_dns="sudo discoveryutil mdnsflushcache;sudo discoveryutil udnsflushcaches;say flushed"
+alias flush_dns="sudo killall -HUP mDNSResponder; sleep 2; echo macOS DNS Cache Reset | say"
 alias timestamp="date +%s"
 
 # python
@@ -58,3 +58,5 @@ alias bddown='boot2docker down'
 
 # .env files
 alias loadenv='export $(cat .env | xargs)'
+
+alias ztime='date -u +"%Y-%m-%dT%H:%M:%SZ"'

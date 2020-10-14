@@ -1,6 +1,6 @@
 [user]
-  name = Tom Brice
-  email = tomtoday@gmail.com
+	name = Tom Brice
+	email = tbrice@gannett.com
 [color]
   branch = auto
   diff = auto
@@ -33,11 +33,16 @@
   co = checkout
   df = diff
   lg = log -p
-	send = ! rake  && git push \"$@\"
 [branch]
   autosetupmerge = true
-[github]
-  user = tomtoday
-  token = ##
 [push]
   default = upstream
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[credential]
+	helper = osxkeychain
+[url "ssh://git@github.com/"]
+	insteadOf = https://github.com/

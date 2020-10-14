@@ -1,77 +1,25 @@
-# Shitty bloat
-# autoload -U compinit
-# compinit
-#  
-# # matches case insensitive for lowercase
-# zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
-#  
-# # pasting with tabs doesn't perform completion
-# zstyle ':completion:*' insert-tab pending
-##############
-
-autoload -U incremental-complete-word
-zle -N incremental-complete-word
-bindkey "^Xi" incremental-complete-word ## C-x-i
-
-#setopt EXTENDED_GLOB
-setopt noautomenu
-setopt COMPLETE_IN_WORD
-setopt ALWAYS_TO_END
-
-unsetopt flowcontrol
-
-WORDCHARS=''
-
-unsetopt MENU_COMPLETE
-setopt AUTO_MENU
-
 ## Completions
 autoload -U compinit
-compinit -C
+compinit
 
 zmodload -i zsh/complist
 
 autoload -U zstyle+
+
 ## completions ####
-# zstyle ':completion:*:*:*:*:processes' force-list always
-# zstyle ':completion:*:*:*:*:*' menu yes select
+zstyle ':completion:*:*:*:*:processes' force-list always
+zstyle ':completion:*:*:*:*:*' menu yes select
 zstyle ':completion:*' menu yes select
+
 # FIXME
-bindkey -M menuselect '/' accept-and-infer-next-history \
-                      '^U' undo \
+bindkey -M menuselect '^U' undo \
                       '^@' accept-and-menu-complete \
                       '^A' .beginning-of-line-hist \
                       '^E' .end-of-line-hist \
                       '^P' vi-forward-blank-word \
                       '^N' vi-backward-blank-word \
-## add colors to processes for kill completion
 
-zstyle ':completion:*:*:kill:*:processes' command 'ps -axco pid,user,command'
-zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
-zstyle ':completion:*:*:*:*:processes' command "ps -u `whoami` -o pid,user,comm -w -w"
-# zstyle ':completion:*:*:(ssh|scp):*:*' hosts `sed 's/^\([^ ,]*\).*$/\1/' ~/.ssh/known_hosts`
-zstyle ':completion:*:scp:*' tag-order \
-   files users 'hosts:-host hosts:-domain:domain hosts:-ipaddr"IP\ Address *'
-zstyle ':completion:*:scp:*' group-order \
-   files all-files users hosts-domain hosts-host hosts-ipaddr
-zstyle ':completion:*:ssh:*' tag-order \
-   users 'hosts:-host hosts:-domain:domain hosts:-ipaddr"IP\ Address *'
-zstyle ':completion:*:ssh:*' group-order \
-   hosts-domain hosts-host users hosts-ipaddr
 # Common usernames
-users=( admin tbrice thomas root gleemer tom administrator brice tomtoday )
+users=( admin tbrice thomas root tom administrator brice tomtoday )
 
 zstyle ':completion:*' users $users
-## General completion technique
-## complete as much u can ..
-# zstyle ':completion:*' completer _complete _list _oldlist _expand _ignored _match _correct _approximate _prefix
-## complete less
-zstyle ':completion:*' completer _expand _complete _list _ignored _approximate
-## complete minimal
-#zstyle ':completion:*' completer _complete _ignored
-
-## allow one error
-#zstyle ':completion:*:approximate:*' max-errors 1 numeric
-## allow one error for every three characters typed in approximate completer
-# zstyle -e ':completion:*:approximate:*' max-errors \
-# 'reply=( $(( ($#PREFIX+$#SUFFIX)/3 )) numeric )'
